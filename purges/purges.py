@@ -16,6 +16,8 @@ import getpass
 bucket = raw_input("Please enter your serverName:")
 username = raw_input("Please enter your userName:")
 password = getpass.getpass("Plaser enter your Password:")
+thumb = raw_input("Please enter your purge thumb:")
+#需要带上设置的间隔标识符
 # -----------------------
 
 queue = Queue.LifoQueue()
@@ -108,7 +110,7 @@ def print_file_with_iter(path):
                         if i['type'] == 'F':
                             queue.put(new_path)
                         elif i['type'] == 'N':
-                            url = 'http://' + bucket + '.b0.upaiyun.com' + new_path
+                            url = 'http://' + bucket + '.b0.upaiyun.com' + new_path + thumb 
                             if run(url) == 200:
                                 print url+' ---> purge success'
 
